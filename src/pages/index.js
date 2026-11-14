@@ -3,8 +3,8 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
 import Heading from '@theme/Heading';
+
 import styles from './index.module.css';
 
 function HomepageHeader() {
@@ -17,10 +17,14 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
+          <Link className="button button--secondary button--lg" to="/docs/intro">
+            Start Reading
+          </Link>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            className="button button--outline button--secondary button--lg"
+            style={{marginLeft: '1rem'}}
+            to="/blog">
+            Read the Blog
           </Link>
         </div>
       </div>
@@ -32,8 +36,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="Technical deep dives into the Android architecture, from kernel and HAL to the framework.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
