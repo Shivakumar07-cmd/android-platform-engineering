@@ -13,10 +13,10 @@ const config = {
 
   url: 'https://shivakumar07-cmd.github.io',
   baseUrl: '/android-platform-engineering/',
+  trailingSlash: false,
 
   organizationName: 'Shivakumar07-cmd',
   projectName: 'android-platform-engineering',
-  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
 
