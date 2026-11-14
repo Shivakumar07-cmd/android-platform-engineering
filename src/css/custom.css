@@ -28,3 +28,35 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Blog sidebar: list the pinned Welcome post first within its year group. */
+ul:has(> li > a[href$="/blog/welcome"]) {
+  display: flex;
+  flex-direction: column;
+}
+ul:has(> li > a[href$="/blog/welcome"]) > li:has(> a[href$="/blog/welcome"]) {
+  order: -1;
+}
+
+/* Theme color: light blue (overrides the default green) */
+:root {
+  --ifm-color-primary: #2a8bd6;
+  --ifm-color-primary-dark: #267cc4;
+  --ifm-color-primary-darker: #2477bb;
+  --ifm-color-primary-darkest: #1e6199;
+  --ifm-color-primary-light: #4a9be0;
+  --ifm-color-primary-lighter: #5ba3e2;
+  --ifm-color-primary-lightest: #86bcea;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #5aaae8;
+  --ifm-color-primary-dark: #3f9be3;
+  --ifm-color-primary-darker: #3193e1;
+  --ifm-color-primary-darkest: #1b78c4;
+  --ifm-color-primary-light: #75b8ec;
+  --ifm-color-primary-lighter: #83bfee;
+  --ifm-color-primary-lightest: #a9d3f3;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}

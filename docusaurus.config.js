@@ -38,6 +38,14 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          postsPerPage: 'ALL',
+          blogSidebarCount: 'ALL',
+          // Posts with `pinned: true` in front matter come first.
+          processBlogPosts: async ({blogPosts}) => {
+            const pinned = blogPosts.filter((p) => p.metadata.frontMatter.pinned);
+            const rest = blogPosts.filter((p) => !p.metadata.frontMatter.pinned);
+            return [...pinned, ...rest];
+          },
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,

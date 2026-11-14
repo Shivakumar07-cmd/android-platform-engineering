@@ -1,0 +1,35 @@
+---
+slug: self-hosting-android-source-with-gitea
+title: "Self-Hosting the Android 12 Source Tree with Gitea"
+authors: [shivakumar]
+tags: [android, aosp, gitea, tailscale, repo-tool]
+---
+
+I moved a full Android 12 source tree, **1,087 Git projects**, onto my own Gitea server. Developers reach it over Tailscale and sync with `repo`, with no dependence on upstream for day-to-day work.
+
+{/* truncate */}
+
+## What I built
+
+- An Ubuntu server running **Gitea** (native install) with a **PostgreSQL** database
+- **Tailscale** for private access, so nobody depends on a LAN IP
+- A private `Android_OS_Lab` organisation holding all 1,087 repositories and a manifest repository
+- A version-pinned manifest, with its 2 copyfile and 50 linkfile entries preserved
+
+## Three things worth knowing
+
+**Gitea does not allow `/` in repository names, but Android projects have it.** I replaced `/` with `-` in the Gitea repository names and kept the original `path` in the manifest, so the checkout on disk looks exactly as before.
+
+**Shallow repositories were a mixed bag.** Most were pushed shallow. A few failed to push that way, so I unshallowed those and pushed them with full history. A client synced with `--depth=1` works against both.
+
+**Verification matters more than the migration itself.** I checked all 1,087 manifest commit SHAs against Gitea, synced a fresh client, compared every repository with the manifest, and then built Android 12 from the Gitea checkout. That build was the real proof.
+
+## Where it stands
+
+Sync, build, branch, push, pull request and merge to `main` all work. Still ahead: moving existing developer checkouts to the new manifest without re-downloading, teams and permissions, and branch protection.
+
+## Read the full write-up
+
+The step-by-step setup, the migration details and every issue I hit, with its cause and fix, are in the docs:
+
+[Self-Hosted Private Network and Gitea Server](/docs/self-hosted-private-network-and-gitea-server/overview)
