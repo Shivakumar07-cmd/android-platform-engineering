@@ -1,12 +1,5 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -14,28 +7,19 @@ const config = {
   tagline: 'Deep dives into Android Frameworks, System Architecture, Kernel, HAL and Device Bring-up',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
   url: 'https://shivakumar07-cmd.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/android-platform-engineering/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Shivakumar07-cmd', // Usually your GitHub org/user name.
-  projectName: 'android-platform-engineering', // Usually your repo name.
+  organizationName: 'Shivakumar07-cmd',
+  projectName: 'android-platform-engineering',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -48,10 +32,9 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Shivakumar07-cmd/android-platform-engineering/edit/main/',
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
@@ -59,12 +42,9 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/Shivakumar07-cmd/android-platform-engineering/edit/main/blog/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
+            'https://github.com/Shivakumar07-cmd/android-platform-engineering/edit/main/',
+          onInlineTags: 'ignore',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
@@ -78,7 +58,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
@@ -86,7 +65,7 @@ const config = {
       navbar: {
         title: 'Android Platform Engineering',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Android Platform Engineering logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -94,11 +73,17 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/about', label: 'About', position: 'left'},
           {
-            href: 'https://github.com/Shivakumar07-cmd/android-platform-engineering',
+            href: 'https://www.linkedin.com/in/siva-kumar-s-d-a13952182',
+            label: 'LinkedIn',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/Shivakumar07-cmd',
             label: 'GitHub',
             position: 'right',
           },
@@ -108,50 +93,31 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Content',
             items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
+              {label: 'Docs', to: '/docs/intro'},
+              {label: 'Blog', to: '/blog'},
+              {label: 'About', to: '/about'},
             ],
           },
           {
-            title: 'Community',
+            title: 'Connect',
             items: [
+              {label: 'GitHub', href: 'https://github.com/Shivakumar07-cmd'},
+              {label: 'LinkedIn', href: 'https://www.linkedin.com/in/siva-kumar-s-d-a13952182'},
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Site source',
+                href: 'https://github.com/Shivakumar07-cmd/android-platform-engineering',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Android Platform Engineering. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Shivakumar. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['java', 'kotlin', 'bash', 'diff', 'c', 'cpp', 'makefile'],
       },
     }),
 };
