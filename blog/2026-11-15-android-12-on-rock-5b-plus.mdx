@@ -1,0 +1,32 @@
+---
+slug: android-12-on-rock-5b-plus
+title: "Android 12 on the Radxa ROCK 5B+"
+authors: [shivakumar]
+tags: [android, aosp, rk3588, rock-5b-plus, nvme]
+---
+
+I got a Radxa ROCK 5B+ (RK3588) to learn Android below the app layer. This is the short version of getting Android 12 running on it: from the first boot to my own build running from an NVMe SSD.
+
+{/* truncate */}
+
+## What I did
+
+- **Booted the official Radxa OS from a microSD card** to check that the board, power and display work.
+- **Flashed Android 12 to an NVMe SSD** from a Linux PC, with the board in Maskrom mode, using Linux_Upgrade_Tool.
+- **Built Android 12 from source**, first from Radxa's manifests and later from my own [Gitea server](/blog/self-hosting-android-source-with-gitea).
+- **Enabled NVMe boot** in the board configuration, flashed my own `update.img`, and confirmed from the kernel command line that it boots from NVMe.
+
+## What tripped me up
+
+- The packaged `rkdeveloptool` did not work for me. Linux_Upgrade_Tool did.
+- The build needed `libncurses5` and Python 2 (for U-Boot) installed by hand, and the kernel only built with GCC after Clang failed.
+- Moving the source tree left stale paths in the build output, which broke the build until I deleted the stale `m4` symlink.
+
+## The full write-up
+
+Step-by-step pages, with the commands and the cause and fix for each issue:
+
+1. [First boot from a microSD card](/docs/radxa-rock-5b-plus-android/first-boot-from-microsd)
+2. [Flash Android to the NVMe SSD](/docs/radxa-rock-5b-plus-android/flash-android-to-nvme)
+3. [Build Android 12 from source](/docs/radxa-rock-5b-plus-android/build-android-12)
+4. [Build issues and fixes](/docs/radxa-rock-5b-plus-android/build-issues-and-fixes)

@@ -1,0 +1,8 @@
+{
+  "label": "Radxa ROCK 5B+ Android 12",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Booting, flashing and building Android 12 on the Radxa ROCK 5B+ (RK3588): from the first microSD boot to flashing my own build to an NVMe SSD."
+  }
+}
