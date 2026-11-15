@@ -27,6 +27,12 @@ description: What is complete, what is pending, and the plan for team workflows.
 | Feature branches pushed to Gitea | Done |
 | Pull requests raised for feature branches and merged to `main` | Done |
 
+
+
+## Summary
+
+![Summary of the Gitea server setup and migration](@site/static/img/gitea-architecture.png)
+
 ## Pending
 
 - Migrating an existing developer checkout to the new manifest without downloading everything again

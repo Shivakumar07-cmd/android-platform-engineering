@@ -5,7 +5,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Android Platform Engineering',
   tagline: 'Deep dives into Android Frameworks, System Architecture, Kernel, HAL and Device Bring-up',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon-dino-blue.svg',
 
   future: {
     v4: true,

@@ -34,29 +34,9 @@ This section documents how I moved a complete Android 12 source tree, **1,087 Gi
 
 ## Architecture
 
-```text
-Developer laptops
-       |
-       |  Tailscale (private mesh network)
-       v
-Ubuntu server
-  - Gitea (Git over SSH)
-  - PostgreSQL
-  - Android_OS_Lab organisation (1,087 repositories + manifest)
-       |
-       |  repo init / repo sync
-       v
-Android source checkout on the developer machine
-       |
-       v
-Android 12 build
-```
+![Architecture: developer laptops, Tailscale, and the Gitea server](@site/static/img/gitea-architecture-diagram.svg)
 
 The original checkout (`/srv/aosp`) stays on the server. It was the source for the migration and for generating the manifest.
-
-{/* After fixing the infographic text (it currently says Docker), copy it to static/img/gitea-architecture.png and uncomment the next line:
-![Architecture](/img/gitea-architecture.png)
-*/}
 
 | Component | Role |
 |---|---|
