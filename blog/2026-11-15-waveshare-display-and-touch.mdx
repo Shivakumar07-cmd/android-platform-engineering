@@ -1,0 +1,29 @@
+---
+slug: waveshare-hdmi-display-and-touch
+title: "Fixing a Waveshare HDMI Display and Touchscreen"
+date: 2026-11-15T20:00:00+05:30
+authors: [shivakumar]
+tags: [android, rk3588, rock-5b-plus, display, input]
+---
+
+I connected a Waveshare 7-inch HDMI touchscreen to the ROCK 5B+ running my Android 12 build. Two things broke, one after the other, and they had nothing in common except the screen.
+
+{/* truncate */}
+
+## The display: a clock the kernel would not accept
+
+The picture was blank. The board detected the display and its 1024 x 600 mode, so detection was fine. The kernel refused the mode because the pixel clock it could produce (about 48.4 MHz) did not exactly match the 49 MHz the display needs.
+
+Letting the check accept a small difference made an image appear, but a blurry one. The real cause was in the board's Device Tree: the display part had no link to the HDMI PHY clocks. I added two lines, and both clocks read exactly 49 MHz.
+
+## The touchscreen: right touches, wrong display
+
+The touch chip reported correct coordinates. Android was matching them to the wrong display, because the USB touchscreen was not tied to any display. Android already supports this in an input configuration (IDC) file, so I added one line, `touch.displayId = local:0`, and no framework code changed.
+
+## The lesson
+
+A workaround is not a fix. Find the layer where correct data turns wrong, and fix it there.
+
+The commands, numbers and every step are in the docs:
+
+[Waveshare HDMI display and touchscreen](/docs/radxa-rock-5b-plus-android/waveshare-display-and-touch)
